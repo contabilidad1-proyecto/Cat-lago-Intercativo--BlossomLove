@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blossom Love | Catálogo de Cuentas</title>
+<style>
+:root{
+  --rosa:#d86b8a; --rosa2:#f7d9e2; --vino:#7d2948; --crema:#fffaf7;
+  --verde:#789b7a; --texto:#3d3035; --blanco:#fff;
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--crema);color:var(--texto)}
+header{position:sticky;top:0;z-index:20;background:rgba(255,250,247,.96);backdrop-filter:blur(8px);border-bottom:1px solid #efd8df}
+.nav{max-width:1150px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-family:Georgia,serif;font-size:25px;color:var(--vino);font-weight:bold}
+.logo span{color:var(--rosa)}
+nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
+nav button,.btn{border:0;border-radius:25px;padding:10px 15px;background:var(--rosa2);color:var(--vino);font-weight:bold;cursor:pointer;transition:.2s}
+nav button:hover,.btn:hover{transform:translateY(-2px);background:var(--rosa);color:white}
+.hero{min-height:88vh;display:grid;place-items:center;text-align:center;padding:70px 20px;
+background:radial-gradient(circle at 50% 20%,#fff 0,#fdebf0 38%,#f8dce5 100%)}
+.flower{font-size:70px}
+.hero h1{font: bold 64px Georgia,serif;color:var(--vino);margin:10px 0}
+.hero h2{font:italic 25px Georgia,serif;color:var(--rosa);margin:0 0 20px}
+.card{max-width:1050px;margin:55px auto;padding:30px 22px}
+.section-title{text-align:center;color:var(--vino);font: bold 35px Georgia,serif;margin-bottom:10px}
+.subtitle{text-align:center;color:#806b72;margin-bottom:30px}
+.info{background:white;border-radius:25px;padding:25px;box-shadow:0 10px 30px #7d294817;border:1px solid #f0dce2}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.feature{text-align:center;padding:25px;background:#fff;border-radius:20px;border:1px solid #f0dce2}
+.feature b{display:block;color:var(--vino);margin:8px}
+.menu-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.menu-card{padding:30px;border-radius:25px;text-align:center;color:white;box-shadow:0 10px 25px #0001}
+.menu-card h3{font: bold 27px Georgia,serif}
+.activo{background:linear-gradient(135deg,#7ea27e,#abc5a7)}
+.pasivo{background:linear-gradient(135deg,#9c6b83,#c899ad)}
+.capital{background:linear-gradient(135deg,#b77c91,#e0a9ba)}
+.menu-card button{background:white;border:0;border-radius:20px;padding:10px 18px;color:var(--vino);font-weight:bold;cursor:pointer}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+input,select{padding:12px 14px;border:1px solid #e5cbd4;border-radius:18px;outline:none;background:white;min-width:200px}
+.accounts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.account{background:white;border-radius:20px;border:1px solid #efdce2;overflow:hidden;box-shadow:0 7px 20px #7d29480d}
+.account summary{cursor:pointer;padding:18px;font-weight:bold;color:var(--vino);list-style:none}
+.account summary::-webkit-details-marker{display:none}
+.account summary::before{content:"🌷 ";}.account-body{padding:0 18px 18px;border-top:1px solid #f2e1e6;line-height:1.6}
+.badge{display:inline-block;background:var(--rosa2);color:var(--vino);border-radius:15px;padding:4px 9px;font-size:12px;font-weight:bold;margin:3px}
+.table-wrap{overflow:auto;background:white;border-radius:20px;box-shadow:0 8px 25px #0000000d}
+table{width:100%;border-collapse:collapse;min-width:700px}
+th,td{padding:13px;border-bottom:1px solid #f0e0e5;text-align:left}
+th{background:var(--vino);color:white}
+tr:hover td{background:#fff5f8}
+.example{background:white;border-left:6px solid var(--rosa);padding:20px;border-radius:15px;margin:15px 0;box-shadow:0 5px 18px #0000000b}
+.quiz{background:linear-gradient(135deg,#fff,#fdebf1);padding:28px;border-radius:25px;border:1px solid #efd6df}
+.question{margin:20px 0;padding:18px;background:white;border-radius:17px}
+.question label{display:block;margin:9px 0;cursor:pointer}
+#resultado{font-size:22px;font-weight:bold;color:var(--vino);margin-top:18px}
+footer{text-align:center;background:var(--vino);color:white;padding:35px 20px;margin-top:70px}
+.small{font-size:14px;color:#806b72}
+@media(max-width:700px){
+ .hero h1{font-size:43px}.hero h2{font-size:20px}.nav{flex-direction:column}
+ nav button{padding:8px 10px;font-size:12px}.card{margin:35px auto;padding:20px 15px}
+}
+
+/* --- Blossom Love Deluxe --- */
+body{
+  background:
+    radial-gradient(circle at 10% 10%, #fff 0 4%, transparent 22%),
+    radial-gradient(circle at 90% 30%, #fdebf1 0 4%, transparent 23%),
+    var(--crema);
+}
+body::before{
+  content:"🌸  ✿  🌷  ✿  🌸  ✿  🌷";
+  position:fixed; inset:0; pointer-events:none; z-index:-1;
+  font-size:30px; letter-spacing:40px; line-height:120px;
+  opacity:.045; transform:rotate(-8deg) scale(1.2);
+}
+.hero{position:relative;overflow:hidden}
+.hero::before,.hero::after{
+  content:"";position:absolute;border-radius:50%;filter:blur(2px);opacity:.35;
+  animation:float 7s ease-in-out infinite;
+}
+.hero::before{width:180px;height:180px;background:#fff;left:-60px;top:18%}
+.hero::after{width:230px;height:230px;background:#f7d9e2;right:-90px;bottom:8%;animation-delay:1.5s}
+.hero > div{position:relative;z-index:2}
+.flower{filter:drop-shadow(0 8px 12px #7d294822);animation:flowerFloat 3.5s ease-in-out infinite}
+.hero h1{letter-spacing:1px;text-shadow:0 4px 18px #7d294822}
+.section-title::after{
+  content:"  ✿"; color:var(--rosa); font-size:.7em;
+}
+.info,.feature,.account,.example,.quiz,.table-wrap,.menu-card{
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.info:hover,.feature:hover,.account:hover,.example:hover,.quiz:hover{
+  transform:translateY(-4px);box-shadow:0 14px 32px #7d29481a;
+}
+.menu-card{position:relative;overflow:hidden}
+.menu-card::after{
+  content:"✿";position:absolute;right:18px;top:8px;font-size:80px;opacity:.10;
+}
+.menu-card:hover{transform:translateY(-7px) scale(1.01);box-shadow:0 18px 35px #7d294826}
+nav button.active{background:var(--vino);color:#fff}
+.btn{box-shadow:0 7px 18px #7d294826}
+.badge{box-shadow:0 2px 7px #7d294811}
+section{scroll-margin-top:90px}
+@keyframes float{50%{transform:translateY(-22px) translateX(10px)}}
+@keyframes flowerFloat{50%{transform:translateY(-7px) rotate(1deg)}}
+@media(max-width:700px){
+ body::before{font-size:20px;letter-spacing:18px}
+ .flower{font-size:55px}
+}
+</style>
+</head>
+
+<body>
+<header>
+ <div class="nav">
+  <div class="logo">🌸 Blossom <span>Love</span></div>
+  <nav>
+   <button onclick="ir('inicio')">Inicio</button>
+   <button onclick="ir('introduccion')">Introducción</button>
+   <button onclick="ir('catalogo')">Catálogo</button>
+   <button onclick="ir('tabla')">Tabla</button>
+   <button onclick="ir('ejemplos')">Ejemplos</button>
+   <button onclick="ir('quiz')">Actividad</button>
+  </nav>
+ </div>
+</header>
+
+<main>
+<section id="inicio" class="hero">
+ <div>
+  <div class="flower">🌷🌹💐🌸</div>
+  <h1>Blossom Love</h1>
+  <h2>Catálogo Interactivo de Cuentas</h2>
+  <p><b>Contabilidad I</b></p>
+  <p>Samantha Aylin González Pastrana</p>
+  <p>Universidad Politécnica del Valle de México</p>
+  <p>Profesor: Alejandro Sandoval Rosales</p>
+  <br>
+  <button class="btn" onclick="ir('introduccion')">🌸 Comenzar</button>
+ </div>
+</section>
+
+<section id="introduccion" class="card">
+ <h2 class="section-title">🌿 Introducción</h2>
+ <p class="subtitle">Conociendo la contabilidad de Blossom Love</p>
+ <div class="info">
+  <p>Un <b>catálogo de cuentas</b> es una relación ordenada de las cuentas que una empresa utiliza para registrar y organizar sus operaciones contables. En este proyecto se presentan cuentas de <b>Activo, Pasivo y Capital Contable</b>, aplicadas a una florería imaginaria llamada <b>Blossom Love</b>.</p>
+  <h3>📐 Ecuación contable</h3>
+  <p style="text-align:center;font-size:25px;color:var(--vino)"><b>ACTIVO = PASIVO + CAPITAL CONTABLE</b></p>
+  <div class="grid">
+   <div class="feature">🌷<b>Activo</b>Recursos y bienes que posee el negocio.</div>
+   <div class="feature">🧾<b>Pasivo</b>Obligaciones y deudas de la empresa.</div>
+   <div class="feature">💗<b>Capital</b>Recursos aportados y resultados acumulados del negocio.</div>
+  </div>
+ </div>
+</section>
+
+<section id="catalogo" class="card">
+ <h2 class="section-title">🌸 Menú del catálogo</h2>
+ <p class="subtitle">Selecciona una categoría para explorar sus cuentas</p>
+ <div class="menu-cards">
+  <div class="menu-card activo"><h3>🌿 Activo</h3><p>12 cuentas</p><button onclick="mostrar('activo')">Ver cuentas</button></div>
+  <div class="menu-card pasivo"><h3>🧾 Pasivo</h3><p>8 cuentas</p><button onclick="mostrar('pasivo')">Ver cuentas</button></div>
+  <div class="menu-card capital"><h3>💗 Capital Contable</h3><p>6 cuentas</p><button onclick="mostrar('capital')">Ver cuentas</button></div>
+ </div>
+
+ <div class="controls">
+  <input id="buscador" type="search" placeholder="🔎 Buscar cuenta..." oninput="filtrar()">
+  <select id="filtro" onchange="filtrar()">
+   <option value="todos">Todas las categorías</option>
+   <option value="activo">Activo</option>
+   <option value="pasivo">Pasivo</option>
+   <option value="capital">Capital</option>
+  </select>
+ </div>
+
+ <div id="lista" class="accounts"></div>
+</section>
+
+<section id="tabla" class="card">
+ <h2 class="section-title">📊 Tabla resumen interactiva</h2>
+ <p class="subtitle">Utiliza el buscador para localizar una cuenta</p>
+ <div class="controls"><input id="tablaBuscar" type="search" placeholder="🔎 Buscar por código o nombre..." oninput="tablaFiltrar()"></div>
+ <div class="table-wrap">
+ <table id="tablaCuentas">
+  <thead><tr><th>Código</th><th>Cuenta</th><th>Clasificación</th><th>Naturaleza</th></tr></thead>
+  <tbody></tbody>
+ </table>
+ </div>
+</section>
+
+<section id="ejemplos" class="card">
+ <h2 class="section-title">💐 Ejemplos prácticos</h2>
+ <p class="subtitle">Situaciones relacionadas con Blossom Love</p>
+
+ <div class="example"><h3>🌹 Ejemplo 1 — Compra de flores</h3>
+ <p>Blossom Love compra flores y follaje por $2,500 y paga en efectivo.</p>
+ <b>Registro:</b> aumenta Inventario de flores y disminuye Caja.</div>
+
+ <div class="example"><h3>🌸 Ejemplo 2 — Venta de un arreglo</h3>
+ <p>La florería vende un arreglo floral por $850 y recibe el pago en efectivo.</p>
+ <b>Registro:</b> aumenta Caja y se reconoce el ingreso por la venta.</div>
+
+ <div class="example"><h3>💐 Ejemplo 3 — Compra de equipo</h3>
+ <p>Blossom Love adquiere un refrigerador para conservar flores por $8,000 a crédito.</p>
+ <b>Registro:</b> aumenta Equipo de refrigeración y aumenta Proveedores.</div>
+
+ <div class="example"><h3>🧾 Ejemplo 4 — Pago a proveedor</h3>
+ <p>La florería paga $3,000 de una deuda pendiente con un proveedor.</p>
+ <b>Registro:</b> disminuye la obligación con proveedores y disminuye Bancos.</div>
+
+ <div class="example"><h3>💗 Ejemplo 5 — Aportación del propietario</h3>
+ <p>El propietario aporta $10,000 para fortalecer las operaciones de Blossom Love.</p>
+ <b>Registro:</b> aumenta Bancos y aumenta Capital aportado.</div>
+</section>
+
+<section id="quiz" class="card">
+ <h2 class="section-title">🧠 Actividad interactiva</h2>
+ <p class="subtitle">Comprueba cuánto aprendiste</p>
+ <div class="quiz">
+  <div class="question">
+   <b>1. ¿Cuál de estas cuentas pertenece al Activo?</b>
+   <label><input type="radio" name="q1" value="a"> Proveedores</label>
+   <label><input type="radio" name="q1" value="b"> Caja</label>
+   <label><input type="radio" name="q1" value="c"> Capital aportado</label>
+  </div>
+  <div class="question">
+   <b>2. ¿Cuál es la naturaleza habitual del Pasivo?</b>
+   <label><input type="radio" name="q2" value="a"> Deudora</label>
+   <label><input type="radio" name="q2" value="b"> Acreedora</label>
+   <label><input type="radio" name="q2" value="c"> Ninguna</label>
+  </div>
+  <div class="question">
+   <b>3. ¿Qué cuenta representa una obligación de Blossom Love?</b>
+   <label><input type="radio" name="q3" value="a"> Proveedores</label>
+   <label><input type="radio" name="q3" value="b"> Caja</label>
+   <label><input type="radio" name="q3" value="c"> Inventario de flores</label>
+  </div>
+  <div class="question">
+   <b>4. ¿Cuál es la ecuación contable?</b>
+   <label><input type="radio" name="q4" value="a"> Activo = Pasivo + Capital</label>
+   <label><input type="radio" name="q4" value="b"> Activo = Pasivo - Capital</label>
+   <label><input type="radio" name="q4" value="c"> Capital = Activo + Pasivo</label>
+  </div>
+  <div class="question">
+   <b>5. ¿Qué cuenta representa dinero disponible en la cuenta bancaria?</b>
+   <label><input type="radio" name="q5" value="a"> Bancos</label>
+   <label><input type="radio" name="q5" value="b"> Acreedores diversos</label>
+   <label><input type="radio" name="q5" value="c"> Capital aportado</label>
+  </div>
+  <button class="btn" onclick="calificar()">🌷 Calificar actividad</button>
+  <div id="resultado"></div>
+ </div>
+</section>
+
+<section class="card">
+ <h2 class="section-title">🌱 Conclusión</h2>
+ <div class="info">
+  <p>El catálogo de cuentas permite organizar las operaciones de Blossom Love y facilita identificar los recursos, obligaciones y capital de la empresa. Reconocer la clasificación y naturaleza de cada cuenta ayuda a registrar correctamente las operaciones y comprender la situación financiera del negocio.</p>
+  <p><b>Reflexión:</b> ¿Qué cuenta consideras más importante para comenzar a organizar las operaciones de una florería y por qué?</p>
+ </div>
+</section>
+</main>
+
+
+<button id="topBtn" aria-label="Volver arriba" onclick="ir('inicio')">↑</button>
+<style>
+#topBtn{
+ position:fixed;right:18px;bottom:18px;z-index:30;width:48px;height:48px;
+ border:0;border-radius:50%;background:var(--vino);color:white;font-size:24px;
+ cursor:pointer;box-shadow:0 8px 22px #7d294844;opacity:.9
+}
+#topBtn:hover{transform:translateY(-3px);opacity:1}
+</style>
+<footer>
+ <h2>🌸 Blossom Love</h2>
+ <p>Catálogo Interactivo de Cuentas · Contabilidad I</p>
+ <p>Samantha Aylin González Pastrana · UPVM</p>
+</footer>
+
+<script>
+const cuentas=[
+{c:"1101",n:"Caja",cat:"activo",cl:"Activo Circulante",na:"Deudora",d:"Representa el efectivo disponible físicamente en el negocio.",e:"Cobros en efectivo por arreglos florales."},
+{c:"1102",n:"Bancos",cat:"activo",cl:"Activo Circulante",na:"Deudora",d:"Dinero disponible en cuentas bancarias de Blossom Love.",e:"Depósito de las ventas diarias."},
+{c:"1103",n:"Clientes",cat:"activo",cl:"Activo Circulante",na:"Deudora",d:"Derechos de cobro por ventas realizadas a crédito.",e:"Una empresa compra arreglos a crédito."},
+{c:"1104",n:"Inventario de flores",cat:"activo",cl:"Activo Circulante",na:"Deudora",d:"Flores disponibles para su venta o elaboración de arreglos.",e:"Rosas, tulipanes y girasoles para pedidos."},
+{c:"1105",n:"Material de empaque",cat:"activo",cl:"Activo Circulante",na:"Deudora",d:"Material utilizado para presentar y entregar los productos.",e:"Papel, listones y cajas para arreglos."},
+{c:"1106",n:"Anticipo a proveedores",cat:"activo",cl:"Activo Circulante",na:"Deudora",d:"Pagos entregados anticipadamente a proveedores.",e:"Anticipo por un pedido de flores."},
+{c:"1107",n:"IVA acreditable",cat:"activo",cl:"Activo Circulante",na:"Deudora",d:"Impuesto pagado en adquisiciones que puede acreditarse.",e:"IVA pagado en una compra de materiales."},
+{c:"1201",n:"Mobiliario y equipo",cat:"activo",cl:"Activo No Circulante",na:"Deudora",d:"Muebles y equipo utilizados para operar la florería.",e:"Mostradores y estanterías."},
+{c:"1202",n:"Equipo de refrigeración",cat:"activo",cl:"Activo No Circulante",na:"Deudora",d:"Equipo utilizado para conservar las flores.",e:"Refrigerador para mantener frescos los arreglos."},
+{c:"1203",n:"Equipo de cómputo",cat:"activo",cl:"Activo No Circulante",na:"Deudora",d:"Computadoras y dispositivos utilizados en el negocio.",e:"Computadora para administrar pedidos."},
+{c:"1204",n:"Equipo de reparto",cat:"activo",cl:"Activo No Circulante",na:"Deudora",d:"Vehículos o equipo destinado a entregar pedidos.",e:"Motocicleta utilizada para entregas."},
+{c:"1205",n:"Depreciación acumulada de equipo",cat:"activo",cl:"Activo No Circulante",na:"Acreedora",d:"Acumula la disminución de valor de los activos depreciables.",e:"Depreciación del equipo utilizado por la florería."},
+
+{c:"2101",n:"Proveedores",cat:"pasivo",cl:"Pasivo a Corto Plazo",na:"Acreedora",d:"Deudas con proveedores por compras realizadas a crédito.",e:"Flores compradas a crédito."},
+{c:"2102",n:"Acreedores diversos",cat:"pasivo",cl:"Pasivo a Corto Plazo",na:"Acreedora",d:"Obligaciones con terceros por conceptos distintos a mercancías.",e:"Servicio pendiente de pago."},
+{c:"2103",n:"Documentos por pagar",cat:"pasivo",cl:"Pasivo a Corto Plazo",na:"Acreedora",d:"Obligaciones respaldadas por documentos de pago.",e:"Pagaré por compra de equipo."},
+{c:"2104",n:"IVA trasladado",cat:"pasivo",cl:"Pasivo a Corto Plazo",na:"Acreedora",d:"Impuesto cobrado a los clientes en las ventas.",e:"IVA generado por una venta."},
+{c:"2105",n:"Sueldos por pagar",cat:"pasivo",cl:"Pasivo a Corto Plazo",na:"Acreedora",d:"Sueldos devengados pendientes de pago.",e:"Pago pendiente a una persona trabajadora."},
+{c:"2106",n:"Impuestos por pagar",cat:"pasivo",cl:"Pasivo a Corto Plazo",na:"Acreedora",d:"Impuestos y contribuciones pendientes de pago.",e:"Obligación fiscal pendiente."},
+{c:"2201",n:"Préstamos bancarios a largo plazo",cat:"pasivo",cl:"Pasivo a Largo Plazo",na:"Acreedora",d:"Financiamientos bancarios cuyo vencimiento es a largo plazo.",e:"Crédito para ampliar la florería."},
+{c:"2202",n:"Documentos por pagar a largo plazo",cat:"pasivo",cl:"Pasivo a Largo Plazo",na:"Acreedora",d:"Documentos que representan obligaciones de largo plazo.",e:"Financiamiento de equipo con vencimiento posterior."},
+
+{c:"3101",n:"Capital aportado",cat:"capital",cl:"Capital Contable",na:"Acreedora",d:"Recursos aportados por el propietario o propietarios.",e:"Aportación inicial para abrir Blossom Love."},
+{c:"3102",n:"Capital social",cat:"capital",cl:"Capital Contable",na:"Acreedora",d:"Aportaciones que integran el capital de la empresa.",e:"Aportaciones destinadas a las operaciones."},
+{c:"3103",n:"Utilidades acumuladas",cat:"capital",cl:"Capital Contable",na:"Acreedora",d:"Utilidades obtenidas en ejercicios anteriores que permanecen en la empresa.",e:"Ganancias de periodos anteriores reinvertidas."},
+{c:"3104",n:"Utilidad del ejercicio",cat:"capital",cl:"Capital Contable",na:"Acreedora",d:"Resultado positivo obtenido durante el periodo contable.",e:"Utilidad generada por las ventas de arreglos."},
+{c:"3105",n:"Pérdidas acumuladas",cat:"capital",cl:"Capital Contable",na:"Deudora",d:"Pérdidas de ejercicios anteriores acumuladas.",e:"Resultado negativo de un periodo anterior."},
+{c:"3106",n:"Resultado del ejercicio",cat:"capital",cl:"Capital Contable",na:"Acreedora",d:"Resultado obtenido al comparar ingresos y gastos del periodo.",e:"Resultado contable de las operaciones de Blossom Love."}
+];
+
+function ir(id){document.getElementById(id).scrollIntoView({behavior:"smooth"});}
+function mostrar(cat){
+ document.getElementById("filtro").value=cat;
+ filtrar();
+ ir("catalogo");
+}
+function filtrar(){
+ const q=document.getElementById("buscador").value.toLowerCase();
+ const cat=document.getElementById("filtro").value;
+ const arr=cuentas.filter(x=>(cat==="todos"||x.cat===cat)&&
+ (x.n.toLowerCase().includes(q)||x.c.includes(q)||x.cl.toLowerCase().includes(q)));
+ document.getElementById("lista").innerHTML=arr.map(x=>`
+ <details class="account">
+  <summary>${x.c} · ${x.n}</summary>
+  <div class="account-body">
+   <span class="badge">${x.cl}</span><span class="badge">${x.na}</span>
+   <p><b>Clasificación:</b> ${x.cl}</p>
+   <p><b>Naturaleza:</b> ${x.na}</p>
+   <p><b>Descripción:</b> ${x.d}</p>
+   <p><b>Ejemplo:</b> ${x.e}</p>
+  </div>
+ </details>`).join("");
+}
+function tablaFiltrar(){
+ const q=document.getElementById("tablaBuscar").value.toLowerCase();
+ const arr=cuentas.filter(x=>x.c.includes(q)||x.n.toLowerCase().includes(q)||x.cl.toLowerCase().includes(q));
+ document.querySelector("#tablaCuentas tbody").innerHTML=arr.map(x=>`
+ <tr><td>${x.c}</td><td>${x.n}</td><td>${x.cl}</td><td>${x.na}</td></tr>`).join("");
+}
+function calificar(){
+ const respuestas={q1:"b",q2:"b",q3:"a",q4:"a",q5:"a"};
+ let puntos=0;
+ Object.keys(respuestas).forEach(q=>{
+  const r=document.querySelector('input[name="'+q+'"]:checked');
+  if(r&&r.value===respuestas[q])puntos++;
+ });
+ const nota=puntos*2;
+ document.getElementById("resultado").innerHTML=
+ `🌸 Resultado: ${puntos}/5 correctas — ${nota}/10`;
+}
+filtrar();tablaFiltrar();
+
+const navButtons=[...document.querySelectorAll("nav button")];
+const sections=[...document.querySelectorAll("main section[id]")];
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   navButtons.forEach(b=>b.classList.remove("active"));
+   const b=navButtons.find(x=>x.getAttribute("onclick")?.includes("'"+entry.target.id+"'"));
+   if(b)b.classList.add("active");
+  }
+ });
+},{rootMargin:"-30% 0px -60% 0px"});
+sections.forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>
